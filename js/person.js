@@ -29,17 +29,10 @@ AFRAME.registerComponent('person', {
     texture.wrapT = THREE.ClampToEdgeWrapping;
  
     this.mesh = new THREE.Mesh(geometry, material);
-    el.setObject3D('mesh', this.mesh);
+    el.setObject3D('mesh'+Math.random(), this.mesh);
   },  
 
   tick: function (t, dt) {
-    if (!dt) return;
-    var verts = this.mesh.geometry.vertices;
-    for (var v, vprops, i = 0; (v = verts[i]); i++){
-      vprops = this.waves[i];
-      v.z = vprops.z + Math.sin(vprops.ang) * vprops.amp;
-      vprops.ang += vprops.speed * dt;
-    }
-    this.mesh.geometry.verticesNeedUpdate = true;
+    
   }
 });
